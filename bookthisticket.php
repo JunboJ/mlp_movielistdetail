@@ -4,7 +4,7 @@
     $userid = $_SESSION['userID'];
     $movieid = $_SESSION['movieID'];
     $userName = 'James';
-
+    $email = $_SESSION['email'];
 
     include ('connection.php');
 
@@ -37,11 +37,12 @@
     }
 
 //send email function
-    $getemail_sql = "SELECT email FROM userprofile WHERE UserID = $userid";
-    $email_res = mysqli_query($conn, $getemail_sql);
-    $email_arr = mysqli_fetch_all($email_res);
-    $email = $email_arr[0][0];
-    echo $email;
+    // $getemail_sql = "SELECT email FROM userprofile WHERE UserID = $userid";
+    // $email_res = mysqli_query($conn, $getemail_sql);
+    // $email_arr = mysqli_fetch_all($email_res);
+    // $email = $email_arr[0][0];
+    // $em = $email;
+    // echo $email.'123';
 
     function sendnotification () {
         $userName = $GLOBALS['userName'];
@@ -51,13 +52,13 @@
         $title = $GLOBALS['title'];
         $theatername = $GLOBALS['theatername'];
         $session = $GLOBALS['session'];
-
+        // echo $email.'123';
         $from_name = 'Movie Lover';
         $from_email = 'movielover.jar@gmail.com';
         $headers = 'From: '.$from_name.' <'.$from_email.'>';
-        $body = 'Hi, user'.$userName.'. You have booked '.$seats.' '.$w_ticket.' for'.$title. ' at '.$theatername.' at '.$session;
+        $body = 'Hi, user '.$userName.'. You have booked '.$seats.' '.$w_ticket.' for '.$title. ' at '.$theatername.' at '.$session;
         $subject = 'Your order has been placed successfully!';
-        $to = "'".$email."'";
+        $to = $email;
         if (mail($to, $subject, $body, $headers)) {
             echo 1;
         }else{

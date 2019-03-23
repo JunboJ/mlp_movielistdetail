@@ -51,6 +51,7 @@
             <?php
             session_start();
             $_SESSION['userID'] = 1;
+            $_SESSION['email'] = 'junboz598@gmail.com';
             include 'connection.php';
             
             // for showing movie info
