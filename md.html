@@ -162,5 +162,75 @@
                     </div>
                 </div>
     
+
+
+
+
+
+
+                <div id="myModal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content" >
+                        <span class="close">&times;</span>
+
+                        <h1>Login/Register</h1>
+                          
+                        <form action="loginprocess.php" method="post">
+                        <div class="form-group login" >
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter username" required>
+                        </div>
+                            <div class="form-group login">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+                            </div>
+                            Not a member yet? 
+                            <a href="registerpage.php"> Join us Now!</a>
+                            <br> 
+                            <input type="submit"name="submit" class="btn btn-info" value="Login">
+                        </form>
+                    </div>
+                </div>
+                    
+                              
+  
+                                    
+                                  
+  
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                        <div class="container-fluid">
+                          <div class="navbar-header">
+                              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>  
+                                <span class="icon-bar"></span>  
+                                <span class="icon-bar"></span>  
+                                <span class="icon-bar"></span>                        
+                            </button>
+                            <a class="navbar-brand" href="#"><img id="logo_pic" src="img/logomovielover.png"></a>
+                          </div>
+                          
+                            <div class="collapse navbar-collapse" id="myNavbar">
+                              <ul class="nav navbar-nav">
+                                <li><a href="/movieloverpj/MovieLoverMainPage.php">Home</a></li>
+                                <li><a href="/movieloverpj/movie_list.php">Movies</a></li>
+                                <li><a href="/movieloverpj/MovieLoverMainPage.php#section3">News</a></li>
+                                <li><a href="/movieloverpj/MovieLoverMainPage.php#section4">Contact Us</a></li>
+                                <?php
+                                    if(!isset($_SESSION['userID'])){
+                                      echo '<li class="nav-item">';
+                                      echo '<a href="#" id="myBtn">Login/Register</a>';
+                                      echo '</li>';
+                                    } else {
+                                      // echo '<a id="myBtn" style="display:none;">';
+                                      echo '<li> <a href="logout.php">Logout</a>';
+                                      echo '</li>';
+                                      echo '<li> <a href="MyProfile_page2.php">My Profile</a>';
+                                      echo '</li>';
+                                    }
+                                  ?> 
+                              </div>
+                            </div>
+                        </nav> 
+     
 </body>
 </html>

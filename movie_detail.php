@@ -13,41 +13,48 @@
 
 </head>
 <body id="body">
-        <nav id="topnavbar" class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="#"><img id="logo_pic" src="img/logomovielover.png"></a>
-            
-
+        <nav id="topnavbar" class="navbar navbar-expand-lg" >
+            <a class="navbar-brand" href="/movieloverpj/MovieLoverMainPage.php"><img id="logo_pic" src="img/logomovielover.png" style="height:40px; width:auto"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">HOME</a>
+                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">MOVIES</a>
+                        <a class="nav-link" href="/movieloverpj/movie_list.php">MOVIES</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">NEWS</a>
+                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section3">NEWS</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT US</a>
+                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section4">CONTACT US</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LOGIN</a>
-                    </li>
+                    <?php
+                        session_start();
+                        if(!isset($_SESSION['userID'])) {
+                            echo '<li class="nav-item">';
+                            echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login/Register</a>';
+                            echo '</li>';
+                        } else {
+                            // echo '<a class="nav-link" id="myBtn" style="display:none;">';
+                            echo '<li> <a class="nav-link" href="logout.php">Logout</a>';
+                            echo '</li>';
+                            echo '<li> <a class="nav-link" href "MyProfile_page2.php">My Profile</a>';
+                            echo '</li>';
+                        }
+                    ?>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
         </nav>
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
     <?php
-        session_start();
-
         // $_SESSION['movieID'] = 4;
         // $_SESSION['userid'] = 2;
         $movieID = $_POST['movieid'];
@@ -61,9 +68,36 @@
         $row = mysqli_fetch_array($result);
     ?>
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <!-- Modal content -->
+            <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div> 
+                <form id="loginform" action="loginprocess.php" method="post">
+                <div class="form-group login" >
+                    <input type="text" name="username" class="form-control" id="username" placeholder="Enter username" required>
+                </div>
+                    <div class="form-group login">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+                    </div>
+                    Not a member yet? 
+                    <a href="registerpage.php"> Join us Now!</a>
+                    <br> 
+                    <input type="submit"name="submit" class="btn btn-info" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
+
     <div id="trailerdiv" class="text-xm-center text-sm-center text-md-left text-lg-left">
         <!-- <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video> -->
-        <div id="videodiv">
+        <div>
             <video id="video" autoplay loop>
                     <!-- $vpath = "video/";
                     // echo '<source src='.$vpath.$row[3].'>'; -->
@@ -87,7 +121,7 @@
                     <h1 id="movieTitle"><?php echo $row[0]?></h1>
                     <?php echo "<p>".$row[2]."</p>"; ?>
                     <button class = "btn btn-default" id = "atl_btn"></button>
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#bookticketform" onclick="getareDropitem();">
+                    <button type="button" class="btn btn-default" id = "bttn" data-toggle="modal" data-target="#bookticketform" onclick="getareDropitem();">
                         Book Ticket
                     </button>
                 </div>
@@ -185,7 +219,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="bookthisticket()">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="bookthisticket()">Book ticket</button>
             </div>
             </div>
         </div>

@@ -1,0 +1,386 @@
+body{
+    width: auto;
+    background-color: whitesmoke;
+    background-attachment: fixed;
+    background-size:cover;
+    height: 100%;
+}
+header{
+    position: relative;
+    margin:-7px -7px 50px;
+    height: 80px;
+    background-image: url(headerback.jpg);
+    box-shadow: 0px 2px 20px 0px black;
+    background-color: rgb(123, 123, 123);
+}
+ 
+
+#header {
+    line-height: 120px;
+    padding-top: 15px;
+    
+}
+#searchbox{
+float: right;
+margin: 10px auto 10px;
+
+padding-right: 10px;
+}
+header table{
+    width: 60%;
+}
+
+
+header a{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    /* padding: 53px 5px 53px 5px;*/
+}
+
+header a:hover{
+    color: #ccc;
+   
+    text-decoration: none;
+    
+}
+.mynavBar .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .mynavBar.search-container button:hover {
+    background: #ccc;
+  }
+  
+  .mynavBar.button:hover {
+    background: #ccc;
+  }
+#menu {
+    text-align: right;
+    padding-right: 20px;
+    width: 100%;
+}
+#menu li {
+    display: inline;
+}
+#menu li a{
+    color:rgb(234, 234, 243);
+    font-size: 25px;
+}
+
+@media (max-width:1000px){
+    #slogan {
+        display: none;
+    }
+    #logo {
+        text-align: left;
+        
+    }
+    #logo_pic{
+        height: 40px;
+        }
+
+    #headertext{
+            display: none;
+        }
+}
+
+@media (min-width:1000px){
+
+    #logo_pic{
+        height: 20px;
+        padding-left: 50px;
+       
+    }
+}       
+        
+        section{
+            margin:5px;
+            background-color: rgb(184, 181, 181);
+            text-align: left;
+            position: relative;
+            height: auto;
+        }
+        .secondtab{
+            background-color: whitesmoke;
+        }
+        .thirdtab{
+            background-color: whitesmoke;
+        }
+        
+        
+        #button {
+            text-align: right;
+}
+        #button2 {
+            text-align: right;
+        }
+        .tab{
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            line-height: 30px;
+            padding: 5px;
+            background-color: white;
+            
+        }
+        #tabs_section{
+            background-color: rgb(184, 181, 181);
+            box-shadow: 15px black;
+        }
+        h3{ font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            color: darkblue;          
+
+        }
+
+
+        .tab button{
+            background-color:rgba(57, 63, 63, 0.836);
+            outline: none;
+            border: none;
+            color: white;
+            line-height: 50px;
+            display: inline-block;
+            width:33%;
+        }
+        .tab button:hover {
+            background-color:rgb(123, 123, 123);
+          }
+          .tabcontent{
+              display: none;
+          }
+          .tabinfo{
+              padding: 50px;
+              text-align: justify;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              
+          }
+          
+          .tabinfo2 {
+            padding: 20px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+          .tabinfo h2{
+              text-align: center;
+              font-weight: bold;
+          }
+          
+        footer{
+            background-color: rgb(79, 79, 79);
+            height: 60px;
+            margin: 0px -8px 0px;
+            border-radius: 5px 5px 0px 0px;
+        }
+        
+        footer article{
+            margin: 20px 0px 0px 20px;
+            padding: 20px 0px 0px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size : 10px;
+            text-align: center;
+            color: white;
+        }
+        
+        /*this is form validation*/
+        #cardtype_radios {
+            text-align: center;
+            margin: 30px 0px 30px;
+        }
+
+        .valid_input {
+            margin: 5px 3px;
+        }
+        .form_title {
+            text-align: right;
+        }
+        #law_file {
+            color: royalblue;
+            text-decoration: none;
+        }
+        #card_radioButton {
+            height: 60px;
+        }
+        #card_radioButton img input {
+            line-height: 40px;
+        }
+        #check_box {
+            text-align: right;
+            padding: 30px;
+            background-color: aquamarine;
+        }
+        #confirm_message {
+            display: none;
+            padding: 40px;
+        }
+
+        #confirm_message p {
+            width: 60%;
+            border-radius: 5px;
+            margin: 0px auto 0px;
+            padding: 40px;
+        }
+
+        .form_align {
+            text-align: center;
+        }
+
+        .empty {
+            background-color:lightcoral;
+        }
+        #MyProfile{
+            text-align: center;
+            padding: 20px ;
+        }
+        #radio_button{
+            margin-right: 900px;
+           
+        }
+        
+        
+        .list_item odd {
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+user agent stylesheet
+.list_item odd {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.mylist{
+         font-family: Arial, Helvetica, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+ }   
+.mylist th{
+padding-top: 12px;
+padding-bottom: 12px;
+padding-left: 10px;
+text-align: left;
+background-color: darkblue;
+color: white;
+box-shadow:  5px 10px black;
+}
+.mylist td{
+    border: 1px solid gray;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+.image{
+    float: left;
+}
+.moviedetail{
+    padding: 10px; 
+
+    background-color: rgb(184, 181, 181); 
+
+} 
+.orderdetail{
+    padding: 10px; 
+    
+    background-color: rgb(184, 181, 181);
+}
+.outline{
+    line-height: 140%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+}   
+.titleMlist{
+    padding-bottom: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+    
+} 
+.runtime-genre{
+    font-size: 80%;
+} 
+.column1{
+text-align: left;
+padding-left: 12px;
+} 
+.column2{
+text-align: left;
+padding-left: 92px;
+
+} 
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 110px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid rgb(47, 73, 201);
+    width: 100%;
+    height: 80%
+  }
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #mblock {
+      margin: 3px;
+  }
+  .style-eight {
+    height: 10px;
+    border: 1;
+    box-shadow: inset 0 9px 9px -3px whitesmoke;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    }
+    .personal-info-change{
+        display: none;
+        vertical-align: initial;
+        width: auto;
+        margin-left: 0;
+        text-align: right;
+        padding-right: 8%;
+        font-size: 100%; 
+    }
+    #myBtn{
+        border: 1px solid rgba(57, 63, 63, 0.836);
+        background-color: rgba(57, 63, 63, 0.836);
+        color: white
+    }
