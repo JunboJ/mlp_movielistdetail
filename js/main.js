@@ -2,6 +2,8 @@
 window.onload = checkonload();
 window.onload = checkiflogin();
 
+
+// hide the buttons if user is not login
 function checkiflogin() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
