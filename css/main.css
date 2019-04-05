@@ -8,9 +8,27 @@
         }
 
 /* nav bar here */
+        #navcontainer {
+            position: fixed;
+            z-index: 10;
+        }
         #topnavbar {
             background: none;
-            position: fixed;
+            /* position: fixed; */
+            height: 50px;
+        }
+/* -------for search field------------------------------------------------------------ */
+        #searchcontainer {
+            margin-top:6px;
+        }        
+        #dropdownarea {
+            background-color:white ;
+            position:absolute; 
+            top:90%;
+            z-index:100;
+            right:0px;
+            left:auto;
+            box-shadow: 0px 0px 5px rgba(65, 65, 65, 0.644);
         }
 /* -------for login modal----------------------------------- */
         #loginform {
@@ -48,7 +66,7 @@
 /* pause button */
         #vbtn {
             position: absolute ;
-            top: 10%;
+            margin-top: 3%;
             right: 2%;
             z-index: 0;
 
@@ -79,6 +97,9 @@
         }
 
 /*------------dropdown list here---------------------------------------- */
+        #searchfield {
+            height: 50px;
+        }
         .dropdown a {
             text-decoration: none;
             color: white;
@@ -101,8 +122,11 @@
             top: 0;
         }
         .movieUnit {
-            width: 20%;
-            min-height: 400px;
+            margin-top:4% !important;
+            width: 23%;
+            height: auto;
             margin: 15px;
             display: inline-block;
         }
+
+

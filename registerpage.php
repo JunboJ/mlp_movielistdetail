@@ -85,7 +85,7 @@
             subscriber. <br> Subcription fee only <b>$5 per month</b>
 
 
-            <form name="pay" action="insert.php" method="post">
+            <form name="pay" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                     
                     <div class="row">
                       
@@ -147,7 +147,7 @@
                                     </div>                       
                                 
                                 <div class="form-group form_align col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                                        <button type="submit" class="btn btn-default btn-md" value="Register">Register</button>
+                                        <button type="submit" name="submit" class="btn btn-default btn-md" value="Register">Register</button>
                                     </div>
 
                                   </form>
@@ -159,16 +159,55 @@
                         
                 </form>
 
+                <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "movielover";
+    $db_table1 = "payment_method";
+    $db_table2 = "userprofile";
+
+    // Create connection
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+// "INSERT INTO  $db_table1 (NameOnCard) VALUES ('$nameoncard')"
+
+              if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+              }
+              
+              if (isset($_POST['submit'])) {            
+                $cnum = (int)$_POST['inputccnumber']; 
+                $nameoncard = $_POST['inputnameoncard'];
+                $username = $_POST['inputusername'];
+                $password = $_POST['inputpassword'];
+                $email = $_POST['inputemail'];
+                $area = $_POST['inputarea'];
+                $vdate = (int)$_POST['inputvdate']; 
+                $cvv = (int)$_POST['inputcvv'];
+                $fullname = $_POST['inputfullname'];
+               
+                $sql1 = "INSERT INTO $db_table2 (userName, fullname, password, email, Ccnumber, area, subDate ) VALUES ('$username', '$fullname', $password, '$email', $cnum, '$area',now())";
+                 
+                $sql = "UPDATE $db_table1 SET NameOnCard = '$nameoncard', validDate = $vdate, CVV = $cvv where Ccnumber = $cnum";
+                
+                if (mysqli_query($conn, $sql1)) {
+                    if (mysqli_query($conn, $sql))
+                    echo '<script type="text/javascript">
+                        alert("Congratulations! Now you are registered!");
+                        location.href ="/movieloverpj/MovieLoverMainPage.php";
+                        </script>';
+                } else {
+                      // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                }
+              }
+                mysqli_close($conn);
+?>
+
     </div></div> 
 </div>
-
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-                <script src="js/page2.js"></script>
-
-        
-</body>
-
 <footer>
         <article>
             <div class="container">
@@ -184,5 +223,12 @@
 
         </article>
     </footer>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+                <script src="js/page2.js"></script>
+
+        
+</body>
+
 
 </html>

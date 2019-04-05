@@ -159,3 +159,18 @@
      
 
     
+//set footer to bottom
+$(function () {
+    function fixedfooter () {
+        $("footer").removeClass("fix_bottom");
+            var th = document.body.scrollHeight,
+                wh = window.innerHeight;
+        if (!(th > wh)) {
+            $("footer").addClass("fix_bottom");
+        }else{
+            $("footer").removeClass("fix_bottom");
+        }
+    };
+    fixedfooter();
+    $(window).resize(fixedfooter);
+});

@@ -1,10 +1,5 @@
 <?php
-session_start();
-   include 'connection.php';
-
-
-        
-                                                
+      if (isset($_POST['submit'])) {                   
                // $cnum = (int)$_POST['updateccnumber'];
                 $fullname =  $_POST['updatefullname'];
                 //$nameoncard = $_POST['updatenoc'];
@@ -14,20 +9,24 @@ session_start();
                // $cvv = (int)$_POST['updatecvv'];
                 //$vdate = (int)$_POST['updatevdate'];
                
-                $sql = "UPDATE userprofile SET fullname = '$fullname', userName = '$username', area = '$area', email = '$email'";
+                $update_sql = "UPDATE userprofile SET fullname = '$fullname', userName = '$username', area = '$area', email = '$email'";
                 //$sql1 = "UPDATE payment_method SET NameOnCard = '$nameoncard', validDate = '$vdate', CVV = '$cvv',Ccnumber = '$cnum'";
                  
                
                 
-                if (mysqli_query($conn, $sql)) {
+                if (mysqli_query($conn, $update_sql)) {
                    // if (mysqli_query($connect, $sql1))
-                    echo 'New record created successfully <a href="MyProfile_page2.php"> back </a>';
+                   echo '<script type="javascript">';
+
+                   echo 'alert("Your information has been updated!")';
+                   
+                   echo '</script>';
+                   
+                   
                     
               } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($connect);
+                    echo "Error: " . $update_sql . "<br>" . mysqli_error($connect);
               }
+      }
               mysqli_close($conn);
-              
-                           
-
 ?>

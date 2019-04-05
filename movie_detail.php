@@ -12,54 +12,66 @@
     <link href="//amp.azure.net/libs/amp/2.2.4/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
 
 </head>
-<body id="body">
-        <nav id="topnavbar" class="navbar navbar-expand-lg" >
-            <a class="navbar-brand" href="/movieloverpj/MovieLoverMainPage.php"><img id="logo_pic" src="img/logomovielover.png" style="height:40px; width:auto"></a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/movieloverpj/movie_list.php">MOVIES</a>
-                    </li>
+<body id="body" >
+    <div id="navcontainer" class="container-fluid d-flex justify-content-between">
+        <div class="p-2">
+            <nav id="topnavbar" class="navbar navbar-expand-lg container-fluid" >
+                <a class="navbar-brand" href="/movieloverpj/MovieLoverMainPage.php"><img id="logo_pic" src="img/logomovielover.png" style="height:40px; width:auto"></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php">HOME</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/movieloverpj/movie_list.php">MOVIES</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section3">NEWS</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section3">NEWS</a>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section4">CONTACT US</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/movieloverpj/MovieLoverMainPage.php#section4">CONTACT US</a>
+                        </li>
 
-                    <?php
-                        session_start();
-                        if(!isset($_SESSION['userID'])) {
-                            echo '<li class="nav-item">';
-                            echo '<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login/Register</a>';
-                            echo '</li>';
-                        } else {
-                            // echo '<a class="nav-link" id="myBtn" style="display:none;">';
-                            echo '<li> <a class="nav-link" href="logout.php">Logout</a>';
-                            echo '</li>';
-                            echo '<li> <a class="nav-link" href "MyProfile_page2.php">My Profile</a>';
-                            echo '</li>';
-                        }
-                    ?>
-                </ul>
-                <!-- <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                </form> -->
+                        <?php
+                            session_start();
+                            if(!isset($_SESSION['userID'])) {
+                                echo '<li class= "nav-item">
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login/Register</a>
+                                    </li>';
+                            } else {
+                                // echo '<a class="nav-link" id="myBtn" style="display:none;">';
+                                echo '<li> <a class="nav-link" href="/movieloverpj/logout.php">Logout</a>';
+                                echo '</li>';
+                                echo '<li> <a class="nav-link" href="/movieloverpj/myprofile.php">My Profile</a>';
+                                echo '</li>';
+                            }
+                        ?>
+                    </ul>
+                    
+                </div>
+            </nav>
+        </div>
+        <div class="dropdown p-2">
+                <input class="form-control ds-input mr-sm-2" id="searchbox" autocomplete="off" spellcheck="false" role="combobox" type="search" placeholder="Search">
+                <!-- <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button> -->
+            <div class="ds-dropdown-menu" role="listbox" id="dropdownarea" style="margin-top:10px;">
+                        <!-- <div id="dropdownarea">
+                        </div> -->
             </div>
-        </nav>
+        </div>
+    </div>
 <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////   -->
     <?php
         // $_SESSION['movieID'] = 4;
         // $_SESSION['userid'] = 2;
         $movieID = $_POST['movieid'];
         $_SESSION['movieID'] = $movieID;
-        $userID = $_SESSION['userID'];
+        if (isset($_SESSION['userID'])) {
+            $userID = $_SESSION['userID'];
+        }
+
         include 'connection.php';
         
         // for showing movie info
@@ -101,7 +113,14 @@
             <video id="video" autoplay loop>
                     <!-- $vpath = "video/";
                     // echo '<source src='.$vpath.$row[3].'>'; -->
-                    <source src="video/thelionking.mov">
+                    <!-- <source src="video/thelionking.mov"> -->
+                    <?php
+                        $trailer_sql ="SELECT trailerURL FROM movies WHERE movieID = $movieID";
+                        $trailer_res = mysqli_query($conn,$trailer_sql);
+                        $trailer_arr = mysqli_fetch_all($trailer_res);
+
+                        echo '<source src="video/'.$trailer_arr[0][0].'">';
+                    ?>
             </video>
         </div>
 
@@ -244,8 +263,21 @@
             <div class="news" class="row">
                 <h2>News</h2>
                 <ul>
-                    <li><a>asdf</a></li>
-                    <li><a>asdf</a></li>
+                <?php
+                      $sql ="SELECT newsUrl, newstitle FROM news WHERE movieID = $movieID";
+                      $result = mysqli_query($conn,$sql);
+                      //$row = mysqli_fetch_array($result);
+
+                      if (mysqli_num_rows($result) > 0) {
+                        // output data of each row
+                        while($row = mysqli_fetch_assoc($result)) {
+                          echo '<li>' . '<a  target="_blank" href="' . $row['newsUrl']. '">' .   $row['newstitle'] . '</a>' . '</li>' . '<br/>';
+                        }
+                    } else {
+                        echo "0 results";
+                    }  
+
+                ?>
                 </ul>
             </div>
         </div>
@@ -271,8 +303,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="//amp.azure.net/libs/amp/2.2.4/azuremediaplayer.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/search.js"></script>
+    <script src="//amp.azure.net/libs/amp/2.2.4/azuremediaplayer.min.js"></script>
 
 
 </body>

@@ -2,8 +2,6 @@
 window.onload = checkonload();
 window.onload = checkiflogin();
 
-
-// hide the buttons if user is not login
 function checkiflogin() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
@@ -287,6 +285,26 @@ function bookthisticket () {
     //currentSes and currentSid are from global var line 161 and 162
     xmlhttp.open("GET", "bookthisticket.php?tn="+theaterName+"&se="+currentSes+"&seid="+currentSid+"&seat="+seats, true);
     xmlhttp.send();
+}
+
+    //for search function
+document.getElementById("searchbox").onkeyup = function () {
+    var val = document.getElementById("searchbox").value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(xmlhttp);
+            document.getElementById("dropdownarea").innerHTML = xmlhttp.response;
+        }
+    };
+    //currentSes and currentSid are from global var line 161 and 162
+    xmlhttp.open("GET", "search.php?sc="+val, true);
+    xmlhttp.send();
+    alert (val);
+}
+
+function gotohere (mid) {
+    
 }
 
     // // MODAL 

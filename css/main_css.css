@@ -1,4 +1,17 @@
-
+/* nav bar here */
+        #navcontainer {
+          position: fixed;
+          z-index: 10;
+        }
+        #topnavbar {
+          background: none;
+/* position: fixed; */
+          height: 50px;
+        }
+/* -------for search field------------------------------------------------------------ */
+        #dropdownarea {
+          background-color:white ;
+        }
         .carousel-inner > .item > img,
         .carousel-inner > .item > a > img {
           width:100%;
@@ -82,8 +95,6 @@
         }
         #searchbox {
             float: right;
-            margin: 10px auto 10px;
-            
             padding-right: 10px;
         }
           
@@ -307,4 +318,11 @@
 .form_align {
     text-align: center;
 }
+
+    #carouselExampleIndicators .carousel-item{
+      width:100vw;
+      height: 100vh;
+    }
+
+
       

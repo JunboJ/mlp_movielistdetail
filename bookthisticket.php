@@ -30,7 +30,7 @@
     $order_res = mysqli_query($conn, $sql);
 
     if ($order_res === TRUE) {
-        echo "order placed successfully";
+        echo "You successfully booked tickets!";
         sendnotification();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -60,9 +60,9 @@
         $subject = 'Your order has been placed successfully!';
         $to = $email;
         if (mail($to, $subject, $body, $headers)) {
-            echo 1;
+            // echo 1;
         }else{
-            echo 2;
+            // echo 2;
         }
     }
 
